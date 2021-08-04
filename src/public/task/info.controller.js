@@ -15,6 +15,7 @@
         for (const item of menuItems.menu_items){
           if (item.short_name === reg.user.menu){
             reg.item = item;
+            reg.item.category = reg.user.menu.substring(0,1);
           }
         }
       }
