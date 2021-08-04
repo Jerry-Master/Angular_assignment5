@@ -1,0 +1,65 @@
+<div id='form'>
+<fieldset>
+    <legend>Registration</legend>
+    <form name='regForm' novalidate>
+
+      <input type="text" name="Firstname" placeholder="Name"
+        ng-model='reg.user.Firstname'
+        required>
+        <div><span
+          ng-if="regForm.Firstname.$error.required && regForm.Firstname.$touched">
+          Name is required
+        </span></div>
+        <br>
+
+      <input type="text" name="Lastname" placeholder="Last name"
+        ng-model='reg.user.Lastname'
+        required>
+        <div><span
+          ng-if="regForm.Lastname.$error.required && regForm.Lastname.$touched">
+          Last name is required
+        </span></div>
+        <br>
+
+      <input type="email" name="email" placeholder="Email"
+        ng-model='reg.user.email'
+        required>
+        <div><span ng-if="regForm.email.$invalid && regForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span></div>
+        <br>
+
+      <input type="text" name="phone" placeholder="Phone ###-###-####"
+        ng-model='reg.user.phone'
+        pattern="(\d{3})-(\d{3})-(\d{4})">
+        <div><span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span></div>
+        <br>
+
+      <input type="text" name="menu" placeholder="Menu"
+        ng-model='reg.user.menu'
+        required>
+        <div><span
+          ng-if="regForm.menu.$error.required && regForm.menu.$touched">
+          Menu is required
+        </span></div>
+        <div><span
+          ng-if="!reg.isValidMenu() && !regForm.menu.$error.required && regForm.menu.$touched">
+          No such menu number exists (Try Uppercase, ex: A1, B3,...)
+        </span></div>
+        
+        <br>
+
+      <button id='butt' class="bttn-unite bttn-md bttn-default"
+          ng-disabled="regForm.$invalid || !reg.isValidMenu()"
+          ng-click="reg.submit()"
+          >Submit</button>
+
+    </form>
+  </fieldset>
+<br>
+  <div ng-if="reg.registered">
+    Your information has been saved
+  </div>
+</div>

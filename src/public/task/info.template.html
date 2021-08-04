@@ -1,0 +1,28 @@
+<div id='info' class='container menu-item-tile'>
+    <div ng-if="!reg.registered">
+        Not Signed Up Yet. <a ui-sref='public.sign-up'>Sign up Now!</a>
+    </div>
+    <div ng-if='reg.registered'>
+        <p>
+        Registered! <br>
+        First Name: {{reg.user.Firstname}} <br>
+        Last Name: {{reg.user.Lastname}} <br>
+        Email: {{reg.user.email}} <br>
+        Phone: {{reg.user.phone}} <br>
+        Menu Item: <br>
+        </p>
+        <div class="row">
+            <div class="col-sm-5">
+              <div class="menu-item-photo">
+                <div>{{reg.item.short_name}}</div>
+                <img class="img-responsive" width="250" height="150" ng-src="/images/menu/{{reg.item.short_name.substring(0,1)}}/{{reg.item.short_name}}.jpg" alt="{{reg.item.name}}">
+              </div>
+              <div class="menu-item-price">{{reg.item.price_small | currency}}<span> {{reg.item.small_portion_name}}</span> {{reg.item.price_large | currency}} <span>{{reg.item.large_portion_name}}</span></div>
+            </div>
+            <div class="menu-item-description col-sm-7">
+              <h3 class="menu-item-title">{{reg.item.name}}</h3>
+              <p class="menu-item-details">{{reg.item.description}}</p>
+            </div>
+          </div>
+    </div>
+</div>
